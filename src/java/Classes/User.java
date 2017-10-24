@@ -19,7 +19,7 @@ public class User
         this.user = user;
         this.pass = pass;
     }
-
+    
     User() 
     {
         this.user = user;

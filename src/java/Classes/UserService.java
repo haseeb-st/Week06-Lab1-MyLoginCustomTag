@@ -31,7 +31,8 @@ public class UserService
     User us = new User();
     String user = us.getUsername();
     String pass = us.getPassword();
-    boolean loginStatus = false;
+    boolean loginStatuse;
+    
     public static boolean login(String user, String pass, boolean loginStatus)
     {
         String Username1 = "Adam";
@@ -40,28 +41,23 @@ public class UserService
         
         if(user == null || pass == null )
         {
-            System.out.println("Please enter your username or password");
             return loginStatus = false;
         }
         else if(user.isEmpty() || pass.isEmpty())
         {
-            System.out.println("Please enter your username or password");
             return loginStatus = false;
         }
-        else if(user.equals(Username1) || pass.equals(password))
+        else if(user.equals(Username1) && pass.equals(password))
         {
-            System.out.println("Welcome Adam!");
             return loginStatus = true;
         }
-        else if(user.equals(Username2) || pass.equals(password))
+        else if(user.equals(Username2) && pass.equals(password))
         {
-            System.out.println("Welcome Betty!");
             return loginStatus = true;
         }
         else
         {
-            System.out.println("Please enter the correct username or password");
-        }
-        return loginStatus = true;
-    }
+            return loginStatus = false;
+        }   
+    }    
 }

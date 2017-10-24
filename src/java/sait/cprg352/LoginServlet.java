@@ -47,9 +47,14 @@ public class LoginServlet extends HttpServlet
             }
             
         }
+        else if(user.isEmpty() || pass.isEmpty() && user == null || pass == null)
+        {
+            request.setAttribute("wrongValues", "Please enter your Email and Password. Make sure to input the correct log in.");
+            getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);     
+        }
         else
         {
-            request.setAttribute("wrongValues", "Sorry, username or password is incorrect");
+            request.setAttribute("wrongValues", "Please enter your Email and Password. Make sure to input the correct log in.");
             getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
         }
         

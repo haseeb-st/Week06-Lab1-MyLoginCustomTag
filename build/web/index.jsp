@@ -5,6 +5,9 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="ct" tagdir="/WEB-INF/tags" %>
+<%@ taglib  prefix="dt" uri="/WEB-INF/tlds/sait.tld"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,12 +15,17 @@
         <title>Remember Me Login Page</title>
     </head>
     <body>
+        <dt:DebugTag>
+        <H2>Debug Info:</H2>
+        ********************<BR>
+        -Remote Host: ${pageContext.request.remoteHost}<BR>
+        -Session ID: ${pageContext.session.id}<BR>
+        -The foo parameter: ${param.foo}<BR>
+        ********************<BR>
+        </dt:DebugTag>
         <h1>Remember Me Login Page</h1>
             <form action = "login" method="post">
-                Username: <input type="text" name="user"><br>
-                Password: <input type="password" name="pass"><br>
-                <input type="checkbox" name="remember"> Remember me
-                <input type="submit" value="Submit">
+                <ct:login user="${user}"/>
             </form>
         ${wrongValues}
     </body>
