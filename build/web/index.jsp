@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="ct" tagdir="/WEB-INF/tags" %>
-<%@ taglib  prefix="dt" uri="/WEB-INF/tlds/sait.tld"%>
+<%@ taglib prefix="sait" uri="/WEB-INF/tlds/sait.tld"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,14 +15,13 @@
         <title>Remember Me Login Page</title>
     </head>
     <body>
-        <dt:DebugTag>
+        <sait:DebugTag>
         <H2>Debug Info:</H2>
         ********************<BR>
         -Remote Host: ${pageContext.request.remoteHost}<BR>
         -Session ID: ${pageContext.session.id}<BR>
-        -The foo parameter: ${param.foo}<BR>
         ********************<BR>
-        </dt:DebugTag>
+        </sait:DebugTag>
         <h1>Remember Me Login Page</h1>
             <form action = "login" method="post">
                 <ct:login user="${user}"/>

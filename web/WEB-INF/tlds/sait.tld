@@ -23,6 +23,6 @@
     <tag>
         <name>DebugTag</name>
         <tag-class>sait.tags.DebugTag</tag-class>
-        <body-content>scriptless</body-content>
+        <body-content>JSP</body-content>
     </tag>
 </taglib>

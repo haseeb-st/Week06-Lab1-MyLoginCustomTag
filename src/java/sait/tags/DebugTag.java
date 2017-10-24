@@ -6,6 +6,7 @@
 package sait.tags;
 
 import java.io.IOException;
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.PageContext;
@@ -16,16 +17,25 @@ import javax.servlet.jsp.tagext.TagSupport;
  *
  * @author 687159
  */
-public class DebugTag extends SimpleTagSupport
+public class DebugTag extends TagSupport
 {
-    public void doTag() throws JspException, IOException 
+    @Override
+    public int doStartTag() throws JspException 
     {
-        PageContext context = (PageContext) getJspContext();
-        HttpServletRequest request = (HttpServletRequest) context.getRequest();
-        // Output body of tag only if debug param is present.
-        if (request.getParameter("debug") != null) 
+        ServletRequest request = pageContext.getRequest();
+        String domain = request.getServerName();
+        if (domain.startsWith("test") || domain.equals("localhost"))
         {
-            getJspBody().invoke(null);
+            String debug = request.getParameter("debug");
+            if (debug != null)
+            {
+                return EVAL_BODY_INCLUDE;
+            }
+            else
+            {
+                return SKIP_BODY;
+            }  
         }
+        return SKIP_BODY;
     }
 }
